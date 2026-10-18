@@ -246,4 +246,6 @@ All automated tests are integration tests in `src/test/java/com/example/samplecr
 
 | Date | Change | Why |
 | --- | --- | --- |
+| 2026-10-18 | Problem responses leave out `"type": "about:blank"`, unlike the example under Errors. | Spring omits the default type. RFC 9457 says a missing `type` means `about:blank`, so the meaning is the same. |
+| 2026-10-18 | Added `api/RequestValidator`, a small wrapper around the Bean Validation `Validator` that returns `FieldErrorItem`s. | The three services share it to build the error list described in D8. It was not named in Layout. |
 | 2026-10-18 | The Maven Wrapper's `distributionUrl` was set to Maven Central by hand. | `mvn wrapper:wrapper` copied a private mirror from the local Maven settings, which CI cannot reach. |
