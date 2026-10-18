@@ -244,4 +244,6 @@ All automated tests are integration tests in `src/test/java/com/example/samplecr
 
 ## Deviations
 
-<!-- Filled in during implementation: what changed versus this plan, and why. -->
+| Date | Change | Why |
+| --- | --- | --- |
+| 2026-10-18 | The Maven Wrapper's `distributionUrl` was set to Maven Central by hand. | `mvn wrapper:wrapper` copied a private mirror from the local Maven settings, which CI cannot reach. |

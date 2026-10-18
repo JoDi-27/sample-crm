@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: sample-crm
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/samplecrm}
+    username: ${DB_USERNAME:samplecrm}
+    password: ${DB_PASSWORD:samplecrm}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  mvc:
+    problemdetails:
+      enabled: true

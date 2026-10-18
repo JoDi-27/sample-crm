@@ -2,7 +2,7 @@
 id: 001
 title: "CRM service baseline"
 type: feature
-status: planned
+status: in-progress
 phase: 1
 depends_on: []
 refs: ["PLAN Phase 1 / CRM service baseline", "PLAN Phase 1 / Baseline tagged", "BACKLOG MVP / Records", "BACKLOG MVP / Error responses", "BACKLOG MVP / Deleting referenced records", "BACKLOG MVP / Contact list", "BACKLOG MVP / API description", "BACKLOG MVP / CI"]
@@ -152,3 +152,4 @@ API description and build:
 - 2026-10-18 Clarified R18 (deals kept with the company cleared) and R23 (tag `baseline`).
 - 2026-10-18 Approved by running /sdd-plan.
 - 2026-10-18 Planned: plan.md and tasks.md written.
+- 2026-10-18 In progress: plan approved by running /sdd-implement.
