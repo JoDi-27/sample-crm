@@ -4,7 +4,21 @@ A small CRM back end for companies, contacts, and deals, with an HTTP JSON API. 
 
 ## Current state
 
-Phase 1 (baseline), not started. There is no code yet. When the build lands, add the build, test, and run commands to this file.
+Phase 1 (baseline), in progress through spec 001. The service has companies, contacts, and deals over the API, with tests and CI.
+
+## Build, test, and run
+
+Needs Java 25 and a running Docker. The Maven Wrapper downloads Maven.
+
+```sh
+./mvnw verify                       # build and run every test against PostgreSQL in a container
+./mvnw test -Dtest=DealApiTest      # run one test class
+./mvnw spring-boot:test-run         # run the app on :8080 with PostgreSQL in a container
+```
+
+Without Testcontainers, `./mvnw spring-boot:run` uses `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` (default `jdbc:postgresql://localhost:5432/samplecrm`, user and password `samplecrm`). The API description is at `/v3/api-docs`.
+
+Code lives in `src/main/java/com/example/samplecrm/`, one package per record type plus `api` for errors and paging. The schema is in `src/main/resources/db/migration/` (Flyway). CI is `.github/workflows/ci.yml`.
 
 ## Where things live
 
