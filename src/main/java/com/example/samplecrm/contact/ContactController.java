@@ -1,5 +1,8 @@
 package com.example.samplecrm.contact;
 
+import com.example.samplecrm.api.PageResponse;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import java.net.URI;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -25,6 +29,15 @@ class ContactController {
     ResponseEntity<ContactResponse> create(@RequestBody ContactRequest request) {
         ContactResponse created = service.create(request);
         return ResponseEntity.created(URI.create("/contacts/" + created.id())).body(created);
+    }
+
+    @GetMapping
+    PageResponse<ContactResponse> list(
+            @RequestParam(defaultValue = "1") @Min(1) int page,
+            @RequestParam(defaultValue = "20") @Min(1) @Max(100) int size,
+            @RequestParam(required = false) Long companyId,
+            @RequestParam(required = false) String name) {
+        return service.list(page, size, companyId, name);
     }
 
     @GetMapping("/{id}")
