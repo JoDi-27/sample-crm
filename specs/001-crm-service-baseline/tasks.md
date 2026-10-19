@@ -14,36 +14,36 @@
 
 ## Verification
 
-- [ ] **V1** Every acceptance criterion verified, with evidence below
-- [ ] **V2** PLAN.md and BACKLOG.md updated for this spec
+- [x] **V1** Every acceptance criterion verified, with evidence below
+- [x] **V2** PLAN.md and BACKLOG.md updated for this spec
 
 ## Evidence
 
 | Acceptance criterion | Result | Evidence (test, command output, manual check) |
 | --- | --- | --- |
-| AC-1 | | |
-| AC-2 | | |
-| AC-3 | | |
-| AC-4 | | |
-| AC-5 | | |
-| AC-6 | | |
-| AC-7 | | |
-| AC-8 | | |
-| AC-9 | | |
-| AC-10 | | |
-| AC-11 | | |
-| AC-12 | | |
-| AC-13 | | |
-| AC-14 | | |
-| AC-15 | | |
-| AC-16 | | |
-| AC-17 | | |
-| AC-18 | | |
-| AC-19 | | |
-| AC-20 | | |
-| AC-21 | | |
-| AC-22 | | |
-| AC-23 | | |
-| AC-24 | | |
-| AC-25 | | |
-| AC-26 | | |
+| AC-1 | Pass | Integration: `CompanyApiTest.createAndRead`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-2 | Pass | Integration: `ContactApiTest.createAtCompanyAndRead`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-3 | Pass | Integration: `ContactApiTest.createWithoutCompany`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-4 | Pass | Integration: `DealApiTest.createAndRead`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-5 | Pass | Integration: `CompanyApiTest.update`, `ContactApiTest.update`, `DealApiTest.update`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-6 | Pass | Integration: `CompanyApiTest.delete`, `ContactApiTest.delete`, `DealApiTest.delete`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-7 | Pass | Integration: `CompanyApiTest.unknownId`, `ContactApiTest.unknownId`, `DealApiTest.unknownId`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-8 | Pass | Integration: `CompanyApiTest.listAll`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-9 | Pass | Integration: `DealApiTest.listAllAndByCompany`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-10 | Pass | Integration: `ContactListApiTest.pageAndStableOrder`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-11 | Pass | Integration: `ContactListApiTest.defaults`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-12 | Pass | Integration: `ContactListApiTest.invalidPaging` (page 0, size 0, size 101, page abc), `largestPageSizeIsAccepted`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-13 | Pass | Integration: `ContactListApiTest.byCompany`, `byCompanyAndName`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-14 | Pass | Integration: `ContactListApiTest.byName`, `byNameMatchesFirstNameIgnoringCase`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-15 | Pass | Integration: `ContactListApiTest.pastLastPage`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-16 | Pass | Integration: `CompanyApiTest`, `ContactApiTest`, `DealApiTest` `badInputOnCreate` and `badInputOnUpdate` (parameterized), `CompanyApiTest.unreadableBody`, `DealApiTest.zeroAmountIsAccepted`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-17 | Pass | Integration: `ContactApiTest.namesEveryWrongField`, `namesWrongFieldsAndUnknownCompanyTogether`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-18 | Pass | Integration: `ContactApiTest.deleteCompanyKeepsContacts`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-19 | Pass | Integration: `DealApiTest.deleteCompanyKeepsDeals`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-20 | Pass | Integration: `DealApiTest.deleteContactKeepsDeals`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-21 | Pass | Integration: `ApiDescriptionTest.listsEveryOperation`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-22 | Pass | Manual, 2026-10-19: fresh `git clone` at `5390797` on a laptop with Docker 29.5.2, no `DB_URL`; `./mvnw -B verify`: `Tests run: 84, Failures: 0, Errors: 0, Skipped: 0`, `BUILD SUCCESS`, PostgreSQL started by Testcontainers |
+| AC-23 | Pass | Manual: PR 2 (`contact-list-and-validation`) CI on push [run](https://github.com/JoDi-27/sample-crm/actions/runs/39233058229) and on the pull request [run](https://github.com/JoDi-27/sample-crm/actions/runs/39233065185), both success at `b7fedd8`; after merge, push to `main` [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) success at `5390797`. Each run executes `./mvnw -B verify` against the `postgres` service container |
+| AC-24 | Pass | Manual: the tag `baseline` is placed on the commit that records this verification, on `main`, whose parent is `5390797`; checked with `git rev-parse baseline^{commit}` and `git branch --contains baseline` after the push |
+| AC-25 | Pass | Integration: `DealApiTest.updateAfterCompanyDeleted`; passed in `./mvnw -B verify` at `5390797` (84 tests, 0 failures, fresh clone) and in CI [main run](https://github.com/JoDi-27/sample-crm/actions/runs/39233173706) |
+| AC-26 | Pass | Manual, 2026-10-19, fresh clone at `5390797`: with `DB_URL=jdbc:postgresql://localhost:55432/samplecrm` (PostgreSQL 18 started separately), `DB_USERNAME`, `DB_PASSWORD`, and `DOCKER_HOST` pointing at a missing socket so no container runtime is reachable, `./mvnw -B verify` gives 84 tests, 0 failures, `BUILD SUCCESS`, and no Testcontainers output. Without the variables and with Docker: see AC-22. CI uses the variables too (AC-23) |

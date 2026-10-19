@@ -2,7 +2,7 @@
 id: 001
 title: "CRM service baseline"
 type: feature
-status: in-progress
+status: done
 phase: 1
 depends_on: []
 refs: ["PLAN Phase 1 / CRM service baseline", "PLAN Phase 1 / Baseline tagged", "BACKLOG MVP / Records", "BACKLOG MVP / Error responses", "BACKLOG MVP / Deleting referenced records", "BACKLOG MVP / Contact list", "BACKLOG MVP / API description", "BACKLOG MVP / CI"]
@@ -138,7 +138,7 @@ API description and build:
 - **AC-21** (R20) Given the running service, when a client fetches the API description, then it lists every operation of R1–R15.
 - **AC-22** (R21) Given a clean checkout on a laptop with Docker, when the developer runs the build command, then every test runs against a real database started for the tests and the build passes. Recorded as a manual check.
 - **AC-23** (R22) Given the repository on GitHub, when a commit is pushed and a pull request is opened, then CI runs every test and its result appears on the commit. Recorded as a manual check with links to the CI runs.
-- **AC-24** (R23) Given this spec verified, when the tags of the repository are listed, then the baseline tag exists on `main` at the verified commit. Recorded as a manual check.
+- **AC-24** (R23) Given this spec verified, when the tags of the repository are listed, then the baseline tag exists on `main` at the commit that records this verification, whose parent is the verified commit. Recorded as a manual check.
 - **AC-25** (R5, R18) Given a deal whose company was deleted, when a client updates its amount and sends no company, then the update is accepted and the deal still has no company.
 - **AC-26** (R21, R22) Given a running PostgreSQL given by environment variables, when the build command runs on a machine with no container runtime, then every test passes against that database; and given no such variables on a machine with Docker, the same command passes with a database started for the tests. Recorded as a manual check.
 
@@ -155,3 +155,5 @@ API description and build:
 - 2026-10-18 Planned: plan.md and tasks.md written.
 - 2026-10-18 In progress: plan approved by running /sdd-implement.
 - 2026-10-19 R21 and R22: tests use a database given by environment variables when there is one, and CI provides one that way; added AC-26.
+- 2026-10-19 AC-24: the tag goes on the commit that records the verification, since a commit cannot name its own SHA.
+- 2026-10-19 Verified and closed: every acceptance criterion passes at `5390797`.

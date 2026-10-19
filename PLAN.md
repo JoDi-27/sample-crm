@@ -7,7 +7,7 @@ Each checklist item is delivered through a spec in `specs/` (see `specs/README.m
 | Phase | Goal | Status |
 | --- | --- | --- |
 | 0. Kit | Spec-driven development kit in place | Done |
-| 1. Baseline | Happy path steps 1–6: a working service for companies, contacts, and deals, tested and run in CI, and tagged | Not started |
+| 1. Baseline | Happy path steps 1–6: a working service for companies, contacts, and deals, tested and run in CI, and tagged | Done |
 | 2+. Improvements | Work through `BACKLOG.md` "Next", in priority order | Not started |
 
 ## Phase 0: Kit
@@ -16,8 +16,8 @@ Each checklist item is delivered through a spec in `specs/` (see `specs/README.m
 
 ## Phase 1: Baseline
 
-- [ ] **CRM service baseline:** companies, contacts, and deals over the API, with tests and CI
-- [ ] **Baseline tagged** once the service baseline is done
+- [x] **CRM service baseline:** companies, contacts, and deals over the API, with tests and CI
+- [x] **Baseline tagged** once the service baseline is done (`baseline`, spec 001)
 
 ### Exit criteria
 
