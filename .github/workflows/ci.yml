@@ -7,6 +7,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_DB: samplecrm
+          POSTGRES_USER: samplecrm
+          POSTGRES_PASSWORD: samplecrm
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+        ports:
+          - 5432:5432
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-java@v6
@@ -16,3 +30,7 @@ jobs:
           cache: maven
       - name: Build and test
         run: ./mvnw -B verify
+        env:
+          DB_URL: jdbc:postgresql://localhost:5432/samplecrm
+          DB_USERNAME: samplecrm
+          DB_PASSWORD: samplecrm

@@ -16,7 +16,7 @@ Needs Java 25 and a running Docker. The Maven Wrapper downloads Maven.
 ./mvnw spring-boot:test-run         # run the app on :8080 with PostgreSQL in a container
 ```
 
-Without Testcontainers, `./mvnw spring-boot:run` uses `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` (default `jdbc:postgresql://localhost:5432/samplecrm`, user and password `samplecrm`). The API description is at `/v3/api-docs`.
+When `DB_URL` is set, the tests and `spring-boot:test-run` use that database and start no container; CI does this with a PostgreSQL service container. Without Testcontainers, `./mvnw spring-boot:run` uses `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` (default `jdbc:postgresql://localhost:5432/samplecrm`, user and password `samplecrm`). The API description is at `/v3/api-docs`.
 
 Code lives in `src/main/java/com/example/samplecrm/`, one package per record type plus `api` for errors and paging. The schema is in `src/main/resources/db/migration/` (Flyway). CI is `.github/workflows/ci.yml`.
 
