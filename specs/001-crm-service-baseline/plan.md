@@ -173,7 +173,7 @@ The contact list uses a JPA `Specification` built from the optional `companyId` 
 | R13 | `companyId` filter in the contact `Specification` |
 | R14 | `name` filter, case-insensitive contains on first or last name |
 | R15 | Spring Data page past the end: empty content, real total |
-| R16 | Bean Validation + reference checks in each service, `BadInputException` → 400 with every field error |
+| R16 | Field and reference checks in each controller's create and update handler, `BadInputException` → 400 with every field error |
 | R17 | `contacts.company_id ... on delete set null` |
 | R18 | `deals.company_id ... on delete set null`; `companyId` required on create only |
 | R19 | `deals.main_contact_id ... on delete set null` |
@@ -250,4 +250,5 @@ All automated tests are integration tests in `src/test/java/com/example/samplecr
 | --- | --- | --- |
 | 2026-10-18 | Problem responses leave out `"type": "about:blank"`, unlike the example under Errors. | Spring omits the default type. RFC 9457 says a missing `type` means `about:blank`, so the meaning is the same. |
 | 2026-10-18 | Added `api/RequestValidator`, a small wrapper around the Bean Validation `Validator` that returns `FieldErrorItem`s. | The three services share it to build the error list described in D8. It was not named in Layout. |
+| 2026-10-19 | Request validation is written out in each create and update handler of the three controllers, and `api/RequestValidator` and the constraint annotations on the request records were removed. Paging parameters keep `@Min`/`@Max`. Supersedes the service-side validation in D8 and R16's row. | Each operation's rules can be read where the request is handled. Every wrong field, including references, is still named in one answer, as D8 requires. |
 | 2026-10-18 | The Maven Wrapper's `distributionUrl` was set to Maven Central by hand. | `mvn wrapper:wrapper` copied a private mirror from the local Maven settings, which CI cannot reach. |
