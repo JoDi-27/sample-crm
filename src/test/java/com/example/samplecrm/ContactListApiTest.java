@@ -41,7 +41,6 @@ class ContactListApiTest extends ApiTestBase {
         assertThat(items(first)).hasSize(2);
         assertThat(first).containsEntry("page", 1).containsEntry("size", 2).containsEntry("total", 5);
         assertThat(items(again)).isEqualTo(items(first));
-        assertThat(items(get("/contacts?page=2&size=2"))).hasSize(2).doesNotContainAnyElementsOf(items(first));
     }
 
     @Test

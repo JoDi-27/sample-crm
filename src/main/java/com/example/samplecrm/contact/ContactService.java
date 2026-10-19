@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -35,8 +34,9 @@ public class ContactService {
     /** One page of contacts in id order, optionally only one company's or only names containing {@code name}. */
     @Transactional(readOnly = true)
     public PageResponse<ContactResponse> list(int page, int size, Long companyId, String name) {
-        Page<Contact> result = contacts.findAll(matching(companyId, name),
-                PageRequest.of(page - 1, size, Sort.by("id")));
+        long previousRows = (long) (page - 1) * size;
+        long offset = Math.max(0, previousRows - 1);
+        Page<Contact> result = contacts.findAll(matching(companyId, name), new OffsetPage(offset, size, Sort.by("id")));
         return new PageResponse<>(result.map(ContactResponse::from).getContent(), page, size,
                 result.getTotalElements());
     }

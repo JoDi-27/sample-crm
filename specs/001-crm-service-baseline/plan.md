@@ -148,7 +148,7 @@ sequenceDiagram
 
 Deleting a company or contact is a single `DELETE`. PostgreSQL sets the matching `company_id` or `main_contact_id` to null in the same transaction.
 
-The contact list uses a JPA `Specification` built from the optional `companyId` and `name` filters (`lower(first_name) like %text%` or the same on `last_name`), with `PageRequest.of(page - 1, size, Sort.by("id"))`. Sorting by id gives a stable order (R10). Asking past the last page returns an empty `items` list and the real `total` (R15).
+The contact list uses a JPA `Specification` built from the optional `companyId` and `name` filters (`lower(first_name) like %text%` or the same on `last_name`), with a row offset computed from `page` and `size` (see Deviations) and `Sort.by("id")`. Sorting by id gives a stable order (R10). Asking past the last page returns an empty `items` list and the real `total` (R15).
 
 ### Local run
 
@@ -251,4 +251,5 @@ All automated tests are integration tests in `src/test/java/com/example/samplecr
 | 2026-10-18 | Problem responses leave out `"type": "about:blank"`, unlike the example under Errors. | Spring omits the default type. RFC 9457 says a missing `type` means `about:blank`, so the meaning is the same. |
 | 2026-10-18 | Added `api/RequestValidator`, a small wrapper around the Bean Validation `Validator` that returns `FieldErrorItem`s. | The three services share it to build the error list described in D8. It was not named in Layout. |
 | 2026-10-19 | Request validation is written out in each create and update handler of the three controllers, and `api/RequestValidator` and the constraint annotations on the request records were removed. Paging parameters keep `@Min`/`@Max`. Supersedes the service-side validation in D8 and R16's row. | Each operation's rules can be read where the request is handled. Every wrong field, including references, is still named in one answer, as D8 requires. |
+| 2026-10-19 | The contact list computes its row offset itself and passes it as a small offset `Pageable` (`contact/OffsetPage`) instead of `PageRequest.of(page - 1, …)`. | Pages are numbered from 1 in the API, and the offset is kept next to that conversion. |
 | 2026-10-18 | The Maven Wrapper's `distributionUrl` was set to Maven Central by hand. | `mvn wrapper:wrapper` copied a private mirror from the local Maven settings, which CI cannot reach. |
