@@ -1,7 +1,5 @@
 # sample-crm
 
-Sample CRM repository for AI testing.
-
 A small CRM back end for companies, contacts, and deals, with an HTTP JSON API. Java 25, Spring Boot 4, PostgreSQL. See `PRODUCT_INTENT.md` for what it is and `specs/` for how work is done.
 
 ## Requirements
