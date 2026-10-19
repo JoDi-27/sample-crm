@@ -1,8 +1,6 @@
 package com.example.samplecrm.company;
 
-import com.example.samplecrm.api.BadInputException;
 import com.example.samplecrm.api.NotFoundException;
-import com.example.samplecrm.api.RequestValidator;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -13,15 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class CompanyService {
 
     private final CompanyRepository companies;
-    private final RequestValidator validator;
-
-    CompanyService(CompanyRepository companies, RequestValidator validator) {
+    CompanyService(CompanyRepository companies) {
         this.companies = companies;
-        this.validator = validator;
     }
 
     public CompanyResponse create(CompanyRequest request) {
-        BadInputException.throwIfAny(validator.validate(request));
         return CompanyResponse.from(companies.save(new Company(request)));
     }
 
@@ -37,7 +31,6 @@ public class CompanyService {
 
     public CompanyResponse update(long id, CompanyRequest request) {
         Company company = find(id);
-        BadInputException.throwIfAny(validator.validate(request));
         company.update(request);
         return CompanyResponse.from(companies.saveAndFlush(company));
     }

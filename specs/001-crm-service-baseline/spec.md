@@ -6,7 +6,7 @@ status: in-progress
 phase: 1
 depends_on: []
 refs: ["PLAN Phase 1 / CRM service baseline", "PLAN Phase 1 / Baseline tagged", "BACKLOG MVP / Records", "BACKLOG MVP / Error responses", "BACKLOG MVP / Deleting referenced records", "BACKLOG MVP / Contact list", "BACKLOG MVP / API description", "BACKLOG MVP / CI"]
-updated: 2026-10-18
+updated: 2026-10-19
 ---
 
 # 001 · CRM service baseline
@@ -109,8 +109,8 @@ References after deletes:
 API description and build:
 
 - **R20** The service shall publish a machine-readable description of its API that covers every operation in this spec.
-- **R21** The project shall have one build command that runs every automated test against a real instance of the database the service uses.
-- **R22** When a commit is pushed to the hosted repository or a pull request is opened or updated, CI shall run every automated test and report the result on that commit.
+- **R21** The project shall have one build command that runs every automated test against a real instance of the database the service uses. Where a database is given by environment variables, the tests shall use it and start none; otherwise they shall start one themselves.
+- **R22** When a commit is pushed to the hosted repository or a pull request is opened or updated, CI shall run every automated test against a database it provides to the tests through environment variables, and report the result on that commit.
 - **R23** When this spec is verified, the baseline commit on `main` shall carry the tag `baseline`.
 
 ## Acceptance criteria
@@ -140,6 +140,7 @@ API description and build:
 - **AC-23** (R22) Given the repository on GitHub, when a commit is pushed and a pull request is opened, then CI runs every test and its result appears on the commit. Recorded as a manual check with links to the CI runs.
 - **AC-24** (R23) Given this spec verified, when the tags of the repository are listed, then the baseline tag exists on `main` at the verified commit. Recorded as a manual check.
 - **AC-25** (R5, R18) Given a deal whose company was deleted, when a client updates its amount and sends no company, then the update is accepted and the deal still has no company.
+- **AC-26** (R21, R22) Given a running PostgreSQL given by environment variables, when the build command runs on a machine with no container runtime, then every test passes against that database; and given no such variables on a machine with Docker, the same command passes with a database started for the tests. Recorded as a manual check.
 
 ## Open questions
 
@@ -153,3 +154,4 @@ API description and build:
 - 2026-10-18 Approved by running /sdd-plan.
 - 2026-10-18 Planned: plan.md and tasks.md written.
 - 2026-10-18 In progress: plan approved by running /sdd-implement.
+- 2026-10-19 R21 and R22: tests use a database given by environment variables when there is one, and CI provides one that way; added AC-26.

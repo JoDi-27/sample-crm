@@ -1,6 +1,9 @@
 package com.example.samplecrm.company;
 
+import com.example.samplecrm.api.BadInputException;
+import com.example.samplecrm.api.FieldErrorItem;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +27,17 @@ class CompanyController {
 
     @PostMapping
     ResponseEntity<CompanyResponse> create(@RequestBody CompanyRequest request) {
+        List<FieldErrorItem> errors = new ArrayList<>();
+        if (request.name() == null || request.name().isBlank()) {
+            errors.add(new FieldErrorItem("name", "must not be blank"));
+        } else if (request.name().length() > 200) {
+            errors.add(new FieldErrorItem("name", "must be at most 200 characters"));
+        }
+        if (request.website() != null && request.website().length() > 500) {
+            errors.add(new FieldErrorItem("website", "must be at most 500 characters"));
+        }
+        BadInputException.throwIfAny(errors);
+
         CompanyResponse created = service.create(request);
         return ResponseEntity.created(URI.create("/companies/" + created.id())).body(created);
     }
@@ -40,6 +54,17 @@ class CompanyController {
 
     @PutMapping("/{id}")
     CompanyResponse update(@PathVariable long id, @RequestBody CompanyRequest request) {
+        List<FieldErrorItem> errors = new ArrayList<>();
+        if (request.name() == null || request.name().isBlank()) {
+            errors.add(new FieldErrorItem("name", "must not be blank"));
+        } else if (request.name().length() > 200) {
+            errors.add(new FieldErrorItem("name", "must be at most 200 characters"));
+        }
+        if (request.website() != null && request.website().length() > 500) {
+            errors.add(new FieldErrorItem("website", "must be at most 500 characters"));
+        }
+        BadInputException.throwIfAny(errors);
+
         return service.update(id, request);
     }
 

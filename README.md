@@ -1,19 +1,19 @@
 # sample-crm
 
-Sample CRM repository for AI testing.
-
 A small CRM back end for companies, contacts, and deals, with an HTTP JSON API. Java 25, Spring Boot 4, PostgreSQL. See `PRODUCT_INTENT.md` for what it is and `specs/` for how work is done.
 
 ## Requirements
 
 - Java 25
-- Docker, running (tests and the local run start PostgreSQL in a container)
+- Docker, running (tests and the local run start PostgreSQL in a container), or a PostgreSQL given by `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`
 
 ## Build and test
 
 ```sh
 ./mvnw verify
 ```
+
+With `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` set, the tests use that database and start no container. CI works this way, with a PostgreSQL service container. The tests empty its tables, so do not point them at a database you want to keep.
 
 ## Run
 

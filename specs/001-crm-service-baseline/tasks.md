@@ -10,6 +10,7 @@
 - [x] **T6** [P] Deals, test first: `DealApiTest` (create, read, update, delete, unknown id, list all and by company, bad input incl. negative amount and unknown company or contact, delete company keeps deals, delete contact keeps deals, update after company deleted), then `V3__deals.sql` and the `deal` package · `src/main/.../deal/`, `db/migration/V3__deals.sql`, `DealApiTest` · check: `./mvnw verify` → AC-4, AC-5, AC-6, AC-7, AC-9, AC-16, AC-19, AC-20, AC-25
 - [x] **T7** API description: `ApiDescriptionTest` fetches `/v3/api-docs` and checks every operation of R1–R15; set the API title and version · `src/main/.../SampleCrmApplication.java` or `api/OpenApiConfig.java`, `ApiDescriptionTest` · check: `./mvnw verify` → AC-21
 - [x] **T8** Document the build, test, and run commands and update the current state · `CLAUDE.md`, `README.md` · check: commands in the docs run as written from a clean checkout → AC-22
+- [x] **T9** Use a database given by environment variables when there is one: make the Testcontainers bean conditional on `DB_URL` being empty, add a `postgres` service container to CI with `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, and document the variables · `src/test/.../TestcontainersConfiguration.java`, `.github/workflows/ci.yml`, `README.md`, `CLAUDE.md` · check: `./mvnw -B verify` passes with Docker and no variables, and with `DB_URL` set and no container runtime → AC-22, AC-23, AC-26
 
 ## Verification
 
@@ -45,3 +46,4 @@
 | AC-23 | | |
 | AC-24 | | |
 | AC-25 | | |
+| AC-26 | | |

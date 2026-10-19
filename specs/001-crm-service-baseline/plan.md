@@ -148,7 +148,7 @@ sequenceDiagram
 
 Deleting a company or contact is a single `DELETE`. PostgreSQL sets the matching `company_id` or `main_contact_id` to null in the same transaction.
 
-The contact list uses a JPA `Specification` built from the optional `companyId` and `name` filters (`lower(first_name) like %text%` or the same on `last_name`), with `PageRequest.of(page - 1, size, Sort.by("id"))`. Sorting by id gives a stable order (R10). Asking past the last page returns an empty `items` list and the real `total` (R15).
+The contact list uses a JPA `Specification` built from the optional `companyId` and `name` filters (`lower(first_name) like %text%` or the same on `last_name`), with a row offset computed from `page` and `size` (see Deviations) and `Sort.by("id")`. Sorting by id gives a stable order (R10). Asking past the last page returns an empty `items` list and the real `total` (R15).
 
 ### Local run
 
@@ -173,13 +173,13 @@ The contact list uses a JPA `Specification` built from the optional `companyId` 
 | R13 | `companyId` filter in the contact `Specification` |
 | R14 | `name` filter, case-insensitive contains on first or last name |
 | R15 | Spring Data page past the end: empty content, real total |
-| R16 | Bean Validation + reference checks in each service, `BadInputException` → 400 with every field error |
+| R16 | Field and reference checks in each controller's create and update handler, `BadInputException` → 400 with every field error |
 | R17 | `contacts.company_id ... on delete set null` |
 | R18 | `deals.company_id ... on delete set null`; `companyId` required on create only |
 | R19 | `deals.main_contact_id ... on delete set null` |
 | R20 | springdoc at `/v3/api-docs` |
-| R21 | `./mvnw verify` with Testcontainers PostgreSQL |
-| R22 | `.github/workflows/ci.yml` on `push` and `pull_request` |
+| R21 | `./mvnw verify` with Testcontainers PostgreSQL, or the PostgreSQL in `DB_URL` when it is set (D16) |
+| R22 | `.github/workflows/ci.yml` on `push` and `pull_request`, with a `postgres` service container passed as `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` (D16) |
 | R23 | `git tag baseline` on the verified `main` commit, done in `/sdd-verify` |
 
 ## Decisions
@@ -200,6 +200,7 @@ The contact list uses a JPA `Specification` built from the optional `companyId` 
 | D12 | Tests are HTTP-level `@SpringBootTest(RANDOM_PORT)` tests against one shared Testcontainers PostgreSQL, tables truncated before each test | Mock MVC slices with mocked repositories; one container per class | Proves each AC end to end against the real database. Sharing the container through Spring's context cache keeps the build fast. |
 | D13 | GitHub Actions on every `push` and `pull_request`, Ubuntu runner, `./mvnw -B verify` | Only on `main` | R22 covers every pushed commit. Ubuntu runners have Docker for Testcontainers. Settles BACKLOG "CI". |
 | D14 | Local run with `./mvnw spring-boot:test-run` and Testcontainers | A `compose.yaml` with PostgreSQL | No extra file or tool to keep in sync, and it uses the same database setup as the tests. |
+| D16 | Tests start the Testcontainers PostgreSQL only when `DB_URL` is empty (`@ConditionalOnExpression` on the container bean); CI runs a `postgres:18-alpine` service container and passes it through `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` | A Maven profile; a separate on/off property; Testcontainers in CI as well | One switch, using the variables `application.yml` already reads. CI and other build machines without a container runtime can run the same command against a database they provide. |
 | D15 | Field length limits: names and titles 200, first and last names 100, email 254, phone 50, website 500 | Unlimited `text` columns | R16 needs a "too long" rule. These fit real data, and 254 is the practical email maximum. |
 
 ## Test strategy
@@ -233,6 +234,7 @@ All automated tests are integration tests in `src/test/java/com/example/samplecr
 | AC-23 | Manual: push a branch and open a pull request; record links to the CI runs |
 | AC-24 | Manual: `git tag --list baseline` and `git rev-parse baseline` match the verified `main` commit |
 | AC-25 | Integration: `DealApiTest.updateAfterCompanyDeleted` |
+| AC-26 | Manual: `./mvnw -B verify` with `DB_URL` set to a running PostgreSQL and no container runtime, then with no variables and Docker; record both test summaries |
 
 ## Risks and unknowns
 
@@ -248,4 +250,6 @@ All automated tests are integration tests in `src/test/java/com/example/samplecr
 | --- | --- | --- |
 | 2026-10-18 | Problem responses leave out `"type": "about:blank"`, unlike the example under Errors. | Spring omits the default type. RFC 9457 says a missing `type` means `about:blank`, so the meaning is the same. |
 | 2026-10-18 | Added `api/RequestValidator`, a small wrapper around the Bean Validation `Validator` that returns `FieldErrorItem`s. | The three services share it to build the error list described in D8. It was not named in Layout. |
+| 2026-10-19 | Request validation is written out in each create and update handler of the three controllers, and `api/RequestValidator` and the constraint annotations on the request records were removed. Paging parameters keep `@Min`/`@Max`. Supersedes the service-side validation in D8 and R16's row. | Each operation's rules can be read where the request is handled. Every wrong field, including references, is still named in one answer, as D8 requires. |
+| 2026-10-19 | The contact list computes its row offset itself and passes it as a small offset `Pageable` (`contact/OffsetPage`) instead of `PageRequest.of(page - 1, …)`. | Pages are numbered from 1 in the API, and the offset is kept next to that conversion. |
 | 2026-10-18 | The Maven Wrapper's `distributionUrl` was set to Maven Central by hand. | `mvn wrapper:wrapper` copied a private mirror from the local Maven settings, which CI cannot reach. |
