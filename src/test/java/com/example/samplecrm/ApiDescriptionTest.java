@@ -27,6 +27,15 @@ class ApiDescriptionTest extends ApiTestBase {
         assertThat(parameterNames(paths.get("/deals").get("get"))).containsExactly("companyId");
     }
 
+    @Test
+    @SuppressWarnings("unchecked")
+    void companyListTakesName() { // spec 005, NFR-API-02
+        Map<String, Map<String, Object>> paths =
+                (Map<String, Map<String, Object>>) get("/v3/api-docs").get("paths");
+
+        assertThat(parameterNames(paths.get("/companies").get("get"))).containsExactly("name");
+    }
+
     @SuppressWarnings("unchecked")
     private static List<Object> parameterNames(Object operation) {
         List<Map<String, Object>> parameters = (List<Map<String, Object>>) ((Map<String, Object>) operation)

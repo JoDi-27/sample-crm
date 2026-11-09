@@ -87,6 +87,12 @@ public abstract class ApiTestBase {
                 .expectBody(LIST).returnResult().getResponseBody();
     }
 
+    /** A JSON array from a URI template, with each variable encoded (so {@code %} and {@code \} arrive as written). */
+    protected List<Map<String, Object>> getList(String uriTemplate, Object... uriVariables) {
+        return client.get().uri(uriTemplate, uriVariables).exchange().expectStatus().isOk()
+                .expectBody(LIST).returnResult().getResponseBody();
+    }
+
     /** Creates a record and returns its identifier, checking the 201 answer and its Location header. */
     protected long create(String uri, Map<String, Object> body) {
         Map<String, Object> created = json(send(HttpMethod.POST, uri, body)

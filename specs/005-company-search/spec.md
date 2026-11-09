@@ -2,7 +2,7 @@
 id: 005
 title: "Company search"
 type: feature
-status: planned
+status: in-progress
 phase: 2
 depends_on: []
 refs: ["PLAN Phase 2 / Company search", "FR-COMP-03"]
@@ -69,3 +69,4 @@ A client wants to find a company by part of its name, so that it can open deals 
 - 2026-11-09 sdd-reviewer spec mode round 2, clarifications only (auto: spec.approve): AC-4 adds a literal `%` case; R1 and R2 second sentences in EARS form.
 - 2026-11-09 Approved (auto: spec.approve, sdd-reviewer spec mode round 2).
 - 2026-11-09 Plan approved (auto: plan.approve, sdd-reviewer round 2).
+- 2026-11-09 Implementing (auto: plan.approve).

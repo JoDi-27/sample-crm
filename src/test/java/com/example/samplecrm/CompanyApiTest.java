@@ -2,6 +2,7 @@ package com.example.samplecrm;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -76,6 +77,75 @@ class CompanyApiTest extends ApiTestBase {
         assertThat(getList("/companies"))
                 .extracting(company -> company.get("name"))
                 .containsExactlyInAnyOrder("Acme", "Globex", "Initech");
+    }
+
+    @Test
+    void searchByNameIgnoringCase() { // spec 005 AC-1
+        create("/companies", body("name", "Acme Corp"));
+        create("/companies", body("name", "ACME Labs"));
+        create("/companies", body("name", "Big Acme Ltd"));
+        create("/companies", body("name", "Globex"));
+
+        assertThat(names(getList("/companies?name={name}", "acme")))
+                .containsExactlyInAnyOrder("Acme Corp", "ACME Labs", "Big Acme Ltd");
+    }
+
+    @Test
+    void listWithoutNameReturnsAll() { // spec 005 AC-2
+        create("/companies", body("name", "Acme Corp"));
+        create("/companies", body("name", "Globex"));
+        create("/companies", body("name", "Initech"));
+
+        assertThat(names(getList("/companies"))).containsExactlyInAnyOrder("Acme Corp", "Globex", "Initech");
+    }
+
+    @Test
+    void searchWithNoMatchIsEmpty() { // spec 005 AC-3
+        create("/companies", body("name", "Acme Corp"));
+        create("/companies", body("name", "Globex"));
+
+        assertThat(getList("/companies?name={name}", "zzz")).isEmpty();
+    }
+
+    @Test
+    void nameTextMatchesWildcardsLiterally() { // spec 005 AC-4
+        create("/companies", body("name", "A_B Corp"));
+        create("/companies", body("name", "AxB Corp"));
+        create("/companies", body("name", "50% Off"));
+        create("/companies", body("name", "50 Off Ltd"));
+        create("/companies", body("name", "A\\B Corp"));
+        create("/companies", body("name", "AB Corp"));
+
+        assertThat(names(getList("/companies?name={name}", "a_b"))).containsExactly("A_B Corp");
+        assertThat(names(getList("/companies?name={name}", "50%"))).containsExactly("50% Off");
+        assertThat(names(getList("/companies?name={name}", "a\\b"))).containsExactly("A\\B Corp");
+    }
+
+    @Test
+    void listsAreNotPaged() { // spec 005 AC-5
+        for (int i = 1; i <= 25; i++) {
+            create("/companies", body("name", "Acme " + i));
+        }
+        long globex = create("/companies", body("name", "Globex"));
+
+        assertThat(names(getList("/companies?name={name}", "acme")))
+                .hasSize(25)
+                .allSatisfy(name -> assertThat((String) name).startsWith("Acme "));
+
+        delete("/companies/" + globex);
+        assertThat(getList("/companies")).hasSize(25);
+    }
+
+    @Test
+    void emptyNameTextNarrowsNothing() { // spec 005 AC-6
+        create("/companies", body("name", "Acme Corp"));
+        create("/companies", body("name", "Globex"));
+
+        assertThat(names(getList("/companies?name="))).containsExactlyInAnyOrder("Acme Corp", "Globex");
+    }
+
+    private static List<Object> names(List<Map<String, Object>> companies) {
+        return companies.stream().map(company -> company.get("name")).toList();
     }
 
     static Stream<Arguments> badCompanies() {
