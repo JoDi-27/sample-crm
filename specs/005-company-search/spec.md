@@ -2,7 +2,7 @@
 id: 005
 title: "Company search"
 type: feature
-status: draft
+status: planned
 phase: 2
 depends_on: []
 refs: ["PLAN Phase 2 / Company search", "FR-COMP-03"]
@@ -20,10 +20,13 @@ A client can list every company, but cannot find one by name; with more than a h
 **In:**
 
 - Narrowing the company list by part of the company name.
+- No name text is rejected as bad input. An empty name text narrows nothing, because every name contains it, as with the contact list.
 
 **Out:**
 
-- Searching contacts or deals by other fields: BACKLOG.md "Next" if wanted.
+- Searching companies by fields other than name, and changes to contact or deal search: BACKLOG.md "Next" if wanted.
+- Paging the company list (AS-01).
+- Access control: any client may list companies, as for every operation today. API keys are spec 007 (FR-AUTH-01).
 
 ## User scenarios
 
@@ -36,13 +39,17 @@ A client wants to find a company by part of its name, so that it can open deals 
 
 ## Requirements
 
-- **R1** (FR-COMP-03) When a client lists companies with a name text, the service shall return only companies whose name contains that text, ignoring case.
-- **R2** (FR-COMP-03) When a client lists companies without a name text, the service shall return every company, as it does today (spec 001 R8). Neither list, with or without a name text, is paged. (assumed, auto: product, sdd-product, inferred (spec 001 R8; BACKLOG.md § Next), AS-01)
+- **R1** (FR-COMP-03) When a client lists companies with a name text, the service shall return only companies whose name contains that text anywhere, ignoring case, matching every character of the text literally. If no company's name contains the text, then the service shall return an empty list and succeed.
+- **R2** (FR-COMP-03) When a client lists companies without a name text, the service shall return every company, as it does today (spec 001 R8). The service shall not page the company list, with or without a name text. (assumed, auto: product, sdd-product, inferred (spec 001 R8; BACKLOG.md § Next), AS-01)
 
 ## Acceptance criteria
 
-- **AC-1** (R1) Given companies named "Acme Corp", "ACME Labs", and "Globex", when a client lists companies with the name text "acme", then Acme Corp and ACME Labs are returned, and Globex is not.
+- **AC-1** (R1) Given companies named "Acme Corp", "ACME Labs", "Big Acme Ltd", and "Globex", when a client lists companies with the name text "acme", then Acme Corp, ACME Labs, and Big Acme Ltd are returned, and Globex is not.
 - **AC-2** (R2) Given three companies, when a client lists companies without a name text, then all three are returned.
+- **AC-3** (R1) Given companies "Acme Corp" and "Globex", when a client lists companies with the name text "zzz", then the request succeeds and no companies are returned.
+- **AC-4** (R1) Given companies "A_B Corp" and "AxB Corp", when a client lists companies with the name text "a_b", then only A_B Corp is returned; and given "50% Off" and "50 Off Ltd", when a client lists companies with the name text "50%", then only 50% Off is returned.
+- **AC-5** (R2) Given 25 companies whose names contain "acme", when a client lists companies with the name text "acme", then all 25 are returned; and given 25 companies, when a client lists companies without a name text, then all 25 are returned.
+- **AC-6** (R1) Given companies "Acme Corp" and "Globex", when a client lists companies with an empty name text, then both are returned.
 
 ## Capability changes
 
@@ -58,3 +65,7 @@ A client wants to find a company by part of its name, so that it can open deals 
 
 - 2026-11-09 Created.
 - 2026-11-09 R2 clarified: the company list stays unpaged (auto: spec.clarify, auto: product, sdd-product, inferred, AS-01).
+- 2026-11-09 sdd-reviewer spec mode round 1, clarifications only (auto: spec.approve): AC-1 adds a match inside a name; AC-3 (no match), AC-4 (literal `_`), AC-5 (unpaged, 25 companies), and AC-6 (empty text) added for behavior R1 and R2 state; R1 says "anywhere", "literally", and the empty result; Scope says no name text is rejected, and puts paging and access control out.
+- 2026-11-09 sdd-reviewer spec mode round 2, clarifications only (auto: spec.approve): AC-4 adds a literal `%` case; R1 and R2 second sentences in EARS form.
+- 2026-11-09 Approved (auto: spec.approve, sdd-reviewer spec mode round 2).
+- 2026-11-09 Plan approved (auto: plan.approve, sdd-reviewer round 2).

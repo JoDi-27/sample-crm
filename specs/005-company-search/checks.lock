@@ -1,0 +1,2 @@
+# Checks frozen when the plan was approved, by jsdd freeze. jsdd done refuses a task whose check differs.
+T1	./mvnw -B test -Dtest='CompanyApiTest#searchByNameIgnoringCase+listWithoutNameReturnsAll+searchWithNoMatchIsEmpty+nameTextMatchesWildcardsLiterally+listsAreNotPaged+emptyNameTextNarrowsNothing+listAll,ApiDescriptionTest#companyListTakesName' && ./mvnw -B verify
