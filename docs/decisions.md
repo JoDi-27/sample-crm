@@ -21,3 +21,9 @@ The register of decisions. Settled choices get a `DEC-nn` row; open ones keep th
 
 | ID | Decision | Choice | Class | Basis | Reversal | Spec | Date |
 |---|---|---|---|---|---|---|---|
+| AS-02 | Stage of a new deal | open | inferred | BACKLOG.md § Next "Deal stages"; intent § What success looks like; spec 006 S2 | moderate | 006 | 2026-11-09 |
+| AS-03 | Can a won or lost deal be reopened? | Yes, any valid stage is stored; no stage is final | inferred | spec 001 R5 (no field is write-once); spec 006 R3; constitution Art. 1 | moderate | 006 | 2026-11-09 |
+| AS-04 | Can a deal be created won or lost? | Yes, a stage may be sent on create | inferred | spec 006 R2; create and update share one request shape (spec 001 R3/R5) | moderate | 006 | 2026-11-09 |
+| AS-05 | An update that leaves the stage out | keeps the current stage (the one field an update does not clear) | inferred | intent § What success looks like; rule: reversible | moderate | 006 | 2026-11-09 |
+| AS-06 | Unknown stage on the deal list | 400 bad input naming `stage` | inferred | intent § Clear errors, Consistent API; NFR-API-01; spec 001 R12 | cheap | 006 | 2026-11-09 |
+| AS-07 | Stage of deals that exist before stages | open | inferred | as AS-02; R1 needs a stage on every deal | expensive | 006 | 2026-11-09 |
