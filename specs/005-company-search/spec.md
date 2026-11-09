@@ -7,6 +7,7 @@ phase: 2
 depends_on: []
 refs: ["PLAN Phase 2 / Company search", "FR-COMP-03"]
 updated: 2026-11-09
+parked: "verify.gaps: Approve or drop G1 in verify-report.md: add a BACKLOG.md Next item to page the company and deal lists (the follow-up AS-01 defers); every AC passes and both Rs are delivered."
 ---
 
 # 005 · Company search
@@ -70,3 +71,4 @@ A client wants to find a company by part of its name, so that it can open deals 
 - 2026-11-09 Approved (auto: spec.approve, sdd-reviewer spec mode round 2).
 - 2026-11-09 Plan approved (auto: plan.approve, sdd-reviewer round 2).
 - 2026-11-09 Implementing (auto: plan.approve).
+- 2026-11-09 Parked at gate verify.gaps: Approve or drop G1 in verify-report.md: add a BACKLOG.md Next item to page the company and deal lists (the follow-up AS-01 defers); every AC passes and both Rs are delivered. (auto: autonomous)
