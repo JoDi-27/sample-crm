@@ -37,7 +37,7 @@ A client wants to find a company by part of its name, so that it can open deals 
 ## Requirements
 
 - **R1** (FR-COMP-03) When a client lists companies with a name text, the service shall return only companies whose name contains that text, ignoring case.
-- **R2** (FR-COMP-03) When a client lists companies without a name text, the service shall return companies as it does today. [NEEDS CLARIFICATION: should the company list now be paged like the contact list, or keep returning every company?]
+- **R2** (FR-COMP-03) When a client lists companies without a name text, the service shall return every company, as it does today (spec 001 R8). Neither list, with or without a name text, is paged. (assumed, auto: product, sdd-product, inferred (spec 001 R8; BACKLOG.md § Next), AS-01)
 
 ## Acceptance criteria
 
@@ -52,6 +52,9 @@ A client wants to find a company by part of its name, so that it can open deals 
 
 ## Open questions
 
+- Q: Should the company list now be paged like the contact list, or keep returning every company? A: Keep returning every company, without paging, with or without a name text. Paging companies alone would change the response shape and still leave deals unpaged; paging both lists belongs in its own item. (assumed, auto: product, sdd-product, inferred (spec 001 R8/AC-8; spec 005 Scope; BACKLOG.md § Next "Company search"; constitution paging rule is conditional), 2026-11-09, AS-01)
+
 ## Changelog
 
 - 2026-11-09 Created.
+- 2026-11-09 R2 clarified: the company list stays unpaged (auto: spec.clarify, auto: product, sdd-product, inferred, AS-01).

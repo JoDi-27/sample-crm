@@ -21,3 +21,4 @@ The register of decisions. Settled choices get a `DEC-nn` row; open ones keep th
 
 | ID | Decision | Choice | Class | Basis | Reversal | Spec | Date |
 |---|---|---|---|---|---|---|---|
+| AS-01 | Is the company list paged? | No. It returns every company, filtered or not, as it does today | inferred | spec 001 R8/AC-8; spec 005 Scope; BACKLOG.md § Next "Company search"; constitution's paging rule is conditional | cheap | 005 | 2026-11-09 |
