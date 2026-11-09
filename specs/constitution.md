@@ -2,7 +2,7 @@
 
 The non-negotiable rules every spec and plan is checked against. Each plan has a "Constitution check" that names the articles it touches.
 
-`PRODUCT_INTENT.md` stays the source of product intent; the product articles below distill the parts of it that constrain day-to-day design. To change an article, record the decision in the amendments log at the bottom, and update the intent doc if the product intent changed too.
+`docs/intent.md` is the source of product intent; the product articles below distill the parts of it that constrain day-to-day design. To change an article, record the decision in the amendments log at the bottom, and update the intent doc if the product intent changed too.
 
 ## Product articles
 
@@ -21,6 +21,19 @@ The non-negotiable rules every spec and plan is checked against. Each plan has a
 10. **Specs are living.** When implementation shows the spec or plan is wrong, update them first, then the code. Code never silently diverges from its spec.
 11. **Decisions are written down.** Every choice between real alternatives gets a row in the plan's Decisions table (or a spike's Recommendation). Choices that settle a `BACKLOG.md` item also update it in place.
 12. **Verify current docs.** Before using a library, SDK, or tool API, check its current documentation rather than relying on memory, and note the version in the plan.
+
+## Project specifics
+
+What the kit's skills and the reviewer need to know about this project.
+
+- **Test command:** `./mvnw verify` (needs Docker; one test class: `./mvnw test -Dtest=<Class>`)
+- **Layout:** `src/main/java/com/example/samplecrm/`, one package per record type plus `api` for errors and paging. Schema changes are Flyway migrations in `src/main/resources/db/migration/`.
+
+### Architecture checklist
+
+- A controller validates its request and calls its service; persistence stays in the repository.
+- Errors use the RFC 9457 problem details format with an `errors` list of `{field, message}` (`api/ApiExceptionHandler`).
+- A list that is paged uses the shared `page`/`size` parameters and `PageResponse`.
 
 ## Amendments
 

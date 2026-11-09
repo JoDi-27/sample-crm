@@ -30,6 +30,10 @@ None open.
 
 <!-- Ideas that are not part of the baseline. Each becomes a spec when it is picked up. -->
 
+- [ ] **Company search** (spec 005). *Suggested:* filter the company list with a `name` text the way the contact list does.
+- [ ] **Deal stages** (spec 006). *Suggested:* stages `open`, `won`, `lost`.
+- [ ] **API keys** (spec 007).
+
 ## On record: not a priority
 
 - Authentication and users.

@@ -1,0 +1,11 @@
+version: 1
+modes: [manual, autonomous]
+
+# The charter: what an autonomous run may do here. A run can never edit this file.
+autonomous:
+  preset: standard            # sdd-product acts on cited and inferred answers; spec changes park; PRs, no merge
+  types: [feature]            # features only
+  phases: [2]                 # PLAN.md Phase 2
+  exclude_groups: [FR-AUTH]   # access control stays with people
+  specs_per_run: 3
+  wall_time_hours: 3
