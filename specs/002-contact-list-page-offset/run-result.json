@@ -4,7 +4,12 @@
   "runs": [
     {
       "n": 1,
-      "claude": null,
+      "claude": {
+        "cost_usd": 0.7126948,
+        "turns": 2,
+        "is_error": null,
+        "session_id": "06ddd4b2-8a8d-49f8-b6a1-a2e38c578709"
+      },
       "started": "2026-11-10T15:35:52Z",
       "mode": "autopilot",
       "profile": "cloud",
@@ -19,9 +24,9 @@
         "ticked": 1,
         "total": 1
       },
-      "commits": 2,
+      "commits": 3,
       "assumed": [],
-      "ended": "2026-11-10T15:38:44Z"
+      "ended": "2026-11-10T15:39:01Z"
     }
   ]
 }
