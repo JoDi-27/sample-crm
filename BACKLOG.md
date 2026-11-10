@@ -30,7 +30,7 @@ None open.
 
 <!-- Ideas that are not part of the baseline. Each becomes a spec when it is picked up. -->
 
-- [ ] **Contact list repeats a row on page 2 and later.** `ContactService.list` sets the offset to `(page - 1) * size - 1`, so each later page starts one row early and repeats the previous page's last contact. No test reads past page 1. Suggested: fix the offset and add a page 2 test. Spec [002](specs/002-contact-list-page-offset/spec.md), with row FR-LIST-01.
+- [x] **Contact list repeats a row on page 2 and later.** `ContactService.list` sets the offset to `(page - 1) * size - 1`, so each later page starts one row early and repeats the previous page's last contact. No test reads past page 1. Suggested: fix the offset and add a page 2 test. Spec [002](specs/002-contact-list-page-offset/spec.md), with row FR-LIST-01. *Decided (002):* the offset is `(page - 1) * size`.
 
 ## On record: not a priority
 

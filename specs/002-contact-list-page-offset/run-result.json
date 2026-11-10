@@ -1,0 +1,27 @@
+{
+  "schema": "jsdd.run-result/1",
+  "spec": "002",
+  "runs": [
+    {
+      "n": 1,
+      "claude": null,
+      "started": "2026-11-10T15:35:52Z",
+      "mode": "autopilot",
+      "profile": "cloud",
+      "session": "06ddd4b2-8a8d-49f8-b6a1-a2e38c578709",
+      "outcome": "done",
+      "gate": null,
+      "reason": null,
+      "branch": "autopilot/002-contact-list-page-offset",
+      "base": "origin/main",
+      "status": "done",
+      "tasks": {
+        "ticked": 1,
+        "total": 1
+      },
+      "commits": 2,
+      "assumed": [],
+      "ended": "2026-11-10T15:38:44Z"
+    }
+  ]
+}

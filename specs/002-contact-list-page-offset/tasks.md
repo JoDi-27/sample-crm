@@ -8,5 +8,5 @@
 
 | Acceptance criterion | Result | Evidence (test, command output, manual check) |
 | --- | --- | --- |
-| AC-1 | | |
-| AC-2 | | |
+| AC-1 | pass | `ContactListApiTest.pagesDoNotOverlap`; `./mvnw -q test -Dtest='ContactListApiTest#pagesDoNotOverlap+laterPageWithCompanyFilter'` passed (`jsdd done 002 T1`), and `./mvnw verify` passed |
+| AC-2 | pass | `ContactListApiTest.laterPageWithCompanyFilter`, same command |
