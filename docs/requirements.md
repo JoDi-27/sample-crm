@@ -18,6 +18,12 @@ The service already exists (spec 001). Its current behavior is not listed here y
 | Deleting referenced records | `FR-REF` | `ON DELETE SET NULL` in `V2`, `V3`; `CompanyService.delete`, `ContactService.delete` | `*Keeps*` tests in `ContactApiTest`, `DealApiTest` |
 | API description | `FR-APIDOC` | springdoc in `pom.xml` (`/v3/api-docs`) | `ApiDescriptionTest` |
 
+### Contact list, paging, and search (FR-LIST)
+
+| ID | Requirement | Source | Priority |
+|---|---|---|---|
+| FR-LIST-01 | Page *n* of the contact list, in id order, starts with the contact right after the first (*n* − 1) × size matching contacts, so consecutive pages neither repeat nor skip a contact | Spec 001 R10; BACKLOG "Next" | M |
+
 ## 2. Non-functional requirements
 
 | Area | Group | Code | Tests |
