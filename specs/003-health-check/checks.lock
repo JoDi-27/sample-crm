@@ -1,0 +1,4 @@
+# Checks frozen when the plan was approved, by jsdd freeze. jsdd done refuses a task whose check differs.
+T1	./mvnw test -Dtest=HealthApiTest
+T2	grep -q 'GET /health' README.md && grep -q '"status"' README.md
+T3	manual

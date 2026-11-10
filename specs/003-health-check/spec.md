@@ -2,11 +2,12 @@
 id: 003
 title: "Health check"
 type: feature
-status: draft
+status: planned
 phase: 2
 depends_on: []
 refs: ["FR-OPS-01"]
 updated: 2026-11-10
+parked: "task.manual_check: AC-2 (T3): the owner must read the README health check section once T1 and T2 are built, confirm it is clear, and record it"
 ---
 
 # 003 · Health check
@@ -54,3 +55,6 @@ None.
 ## Changelog
 
 - 2026-11-10 Created.
+- 2026-11-10 Approved (by sdd-runtime-bot, by starting /jsdd:auto).
+- 2026-11-10 Plan approved (auto: plan.approve, sdd-reviewer round 1). AC-2 is manual only; run parks at task.manual_check.
+- 2026-11-10 Parked at gate task.manual_check: AC-2 (T3): the owner must read the README health check section once T1 and T2 are built, confirm it is clear, and record it (auto: autopilot)

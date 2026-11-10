@@ -1,0 +1,27 @@
+{
+  "schema": "jsdd.run-result/1",
+  "spec": "003",
+  "runs": [
+    {
+      "n": 1,
+      "claude": null,
+      "started": "2026-11-10T15:56:17Z",
+      "mode": "autopilot",
+      "profile": "cloud",
+      "session": "c2ce1599-02c2-4a64-a5cf-1fcca44b5e67",
+      "outcome": "parked",
+      "gate": "task.manual_check",
+      "reason": "AC-2 (T3): the owner must read the README health check section once T1 and T2 are built, confirm it is clear, and record it",
+      "branch": "autopilot/003-health-check",
+      "base": "origin/main",
+      "status": "planned",
+      "tasks": {
+        "ticked": 0,
+        "total": 3
+      },
+      "commits": 0,
+      "assumed": [],
+      "ended": "2026-11-10T15:57:10Z"
+    }
+  ]
+}
