@@ -1,6 +1,6 @@
 # sample-crm
 
-A small CRM back end for companies, contacts, and deals, with an HTTP JSON API. Java 25, Spring Boot 4, PostgreSQL. See `PRODUCT_INTENT.md` for what it is and `specs/` for how work is done.
+A small CRM back end for companies, contacts, and deals, with an HTTP JSON API. Java 25, Spring Boot 4, PostgreSQL. See `docs/intent.md` for what it is and `specs/` for how work is done.
 
 ## Requirements
 
