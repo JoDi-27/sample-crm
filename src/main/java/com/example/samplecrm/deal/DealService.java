@@ -27,10 +27,17 @@ public class DealService {
         return DealResponse.from(find(id));
     }
 
-    /** Every deal, or every deal of one company, in id order. */
+    /** Every deal in id order, optionally only one company's, only those in one stage, or both. */
     @Transactional(readOnly = true)
-    public List<DealResponse> list(Long companyId) {
-        List<Deal> found = companyId == null ? deals.findAll(BY_ID) : deals.findByCompanyId(companyId, BY_ID);
+    public List<DealResponse> list(Long companyId, DealStage stage) {
+        List<Deal> found;
+        if (companyId == null) {
+            found = stage == null ? deals.findAll(BY_ID) : deals.findByStage(stage, BY_ID);
+        } else {
+            found = stage == null
+                    ? deals.findByCompanyId(companyId, BY_ID)
+                    : deals.findByCompanyIdAndStage(companyId, stage, BY_ID);
+        }
         return found.stream().map(DealResponse::from).toList();
     }
 

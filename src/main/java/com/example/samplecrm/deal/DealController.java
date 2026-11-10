@@ -63,8 +63,13 @@ class DealController {
     }
 
     @GetMapping
-    List<DealResponse> list(@RequestParam(required = false) Long companyId) {
-        return service.list(companyId);
+    List<DealResponse> list(@RequestParam(required = false) Long companyId,
+            @RequestParam(required = false) String stage) {
+        List<FieldErrorItem> errors = new ArrayList<>();
+        checkStage(stage, errors);
+        BadInputException.throwIfAny(errors);
+
+        return service.list(companyId, stage == null ? null : DealStage.parse(stage).orElseThrow());
     }
 
     @GetMapping("/{id}")
