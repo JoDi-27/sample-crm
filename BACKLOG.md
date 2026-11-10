@@ -2,7 +2,7 @@
 
 The baseline goal is one working happy path through the API. When it works end to end, is tested, and runs in CI, the baseline is ready; everything after that is an improvement.
 
-MVP items come with a suggested default to confirm or replace.
+MVP items come with a suggested default to confirm or replace. The roadmap is in [PLAN.md](PLAN.md); decisions already made live in [docs/decisions.md](docs/decisions.md).
 
 ## The happy path
 
@@ -29,6 +29,8 @@ None open.
 ## Next: improvements after the baseline
 
 <!-- Ideas that are not part of the baseline. Each becomes a spec when it is picked up. -->
+
+- [ ] **Contact list repeats a row on page 2 and later.** `ContactService.list` sets the offset to `(page - 1) * size - 1`, so each later page starts one row early and repeats the previous page's last contact. No test reads past page 1. Suggested: fix the offset and add a page 2 test; run `/jsdd:baseline "Contact list, paging, and search"` first, since that area has no rows yet.
 
 ## On record: not a priority
 

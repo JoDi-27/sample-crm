@@ -1,6 +1,6 @@
 # Plan
 
-Phased plan for `sample-crm`, as described in `PRODUCT_INTENT.md`. Open decisions and their suggested defaults live in `BACKLOG.md`; happy path step numbers below refer to the happy path defined there.
+Phased plan for `sample-crm`, as described in [docs/intent.md](docs/intent.md). It is a test bed, and no next milestone is planned. Open decisions and their suggested defaults live in `BACKLOG.md`; settled choices live in [docs/decisions.md](docs/decisions.md). Happy path step numbers below refer to the happy path defined in `BACKLOG.md`.
 
 Each checklist item is delivered through a spec in `specs/` (see `specs/README.md`); `specs/STATUS.md` shows progress.
 
@@ -12,7 +12,7 @@ Each checklist item is delivered through a spec in `specs/` (see `specs/README.m
 
 ## Phase 0: Kit
 
-- [x] **Spec-driven development kit** (`specs/`, `.claude/skills/sdd-*`, `.claude/agents/spike-researcher.md`)
+- [x] **Spec-driven development kit** (`specs/`, the `jsdd` plugin)
 
 ## Phase 1: Baseline
 
@@ -27,4 +27,4 @@ Each checklist item is delivered through a spec in `specs/` (see `specs/README.m
 
 ## Phase 2+: Improvements
 
-Most later changes reach `main` through work on `task/*` branches, which follows its own instructions instead of this plan (see `CLAUDE.md`). Changes to the project itself, such as the build, CI, or this kit, still go through `specs/`.
+Most later changes reach `main` through work on `task/*` branches, which follows its own instructions instead of this plan (see `CLAUDE.md`). Changes to the project itself, such as the build, CI, or this kit, still go through `specs/`. When such work first touches an area in [docs/requirements.md](docs/requirements.md), it starts with a baseline of that area (`/jsdd:baseline <area>`).
