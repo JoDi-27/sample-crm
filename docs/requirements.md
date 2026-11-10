@@ -18,6 +18,18 @@ The service already exists (spec 001). Its current behavior is not listed here y
 | Deleting referenced records | `FR-REF` | `ON DELETE SET NULL` in `V2`, `V3`; `CompanyService.delete`, `ContactService.delete` | `*Keeps*` tests in `ContactApiTest`, `DealApiTest` |
 | API description | `FR-APIDOC` | springdoc in `pom.xml` (`/v3/api-docs`) | `ApiDescriptionTest` |
 
+### Companies (FR-COMP)
+
+| ID | Requirement | Source | Priority |
+|---|---|---|---|
+| FR-COMP-01 | A client can narrow the company list to companies whose name contains a given text, ignoring case | sdd-runtime spike 004 | S |
+
+### Operations (FR-OPS)
+
+| ID | Requirement | Source | Priority |
+|---|---|---|---|
+| FR-OPS-01 | The service answers a health check that says it is up, and the README tells a developer how to call it | sdd-runtime spike 004 | S |
+
 ### Contact list, paging, and search (FR-LIST)
 
 | ID | Requirement | Source | Priority |
