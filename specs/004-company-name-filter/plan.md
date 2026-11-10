@@ -53,4 +53,8 @@ Add an optional `name` query parameter to `GET /companies`. The controller passe
 
 ## Deviations
 
+| # | Deviation |
+| --- | --- |
+| 1 | auto: implement.stuck: T1's check used `+` to join two test classes, which Surefire does not accept ("No tests matching pattern"). It now uses `,`. The same two classes run, so the check is not weakened. |
+
 ## Amendments

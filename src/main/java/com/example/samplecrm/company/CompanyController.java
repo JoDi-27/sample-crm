@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -43,8 +44,8 @@ class CompanyController {
     }
 
     @GetMapping
-    List<CompanyResponse> list() {
-        return service.list();
+    List<CompanyResponse> list(@RequestParam(required = false) String name) {
+        return service.list(name);
     }
 
     @GetMapping("/{id}")
