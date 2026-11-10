@@ -6,16 +6,19 @@ Everything here was done without a person. Read "Product decisions", "Decisions 
 -->
 
 **Mode:** autonomous, preset standard, loop specs/runs/2026-11-09-1.md · **Started by:** JoDi27, by running /jsdd:auto · **Branch:** autonomous/006-deal-stages (from `autonomous-test`)
-**Started:** 2026-11-09 23:38 · **Ended:** <date time>
-**Outcome:** <outcome>
+**Started:** 2026-11-09 23:09 · **Ended:** 2026-11-10 01:02
+**Outcome:** pull request ready
 
 ## Timeline
 
-- 23:40 Clarify: the two open markers, plus four questions the spec needed (create with a stage, update without one, unknown list stage, stage of existing deals), sent to sdd-product; all six answers inferred, within the charter; AS-02 to AS-07. Commit `[006] Clarify (auto)`.
-- 23:50 Spec review: sdd-reviewer spec mode round 1, no blocking finding; 4 should-fix and 5 notes, all clarifications (null stage, create validation, empty list, access control out, AC-10 to AC-13). Spec approved.
-- 00:00 Plan: two tasks. sdd-reviewer plan mode round 1 (52 min), 1 blocking (T1's check passed without the migration test), fixed with one class per command; also T1 runs the whole build, AC-13 moved to T1, the migration test drops its own schema, no index on stage. Round 2, no blocking finding. Checks frozen. Commit `[006] Plan`.
-- 01:05 T1: tests first (10 failed, as expected), then the migration, enum, converter, and deal changes. `jsdd done 006 T1` passed on attempt 1 (94 tests). Commit `[006] T1`.
-- 01:15 T2: tests first (4 failed), then the list filter. `jsdd done 006 T2` passed on attempt 1 (97 tests). Commit `[006] T2`.
+Times are commit times.
+
+- 23:11 Clarify: the two open markers, plus four questions the spec needed (create with a stage, update without one, unknown list stage, stage of existing deals), sent to sdd-product; all six answers inferred, within the charter; AS-02 to AS-07. Commit `[006] Clarify (auto)`.
+- 23:15 Spec review: sdd-reviewer spec mode round 1, no blocking finding; 4 should-fix and 5 notes, all clarifications (null stage, create validation, empty list, access control out, AC-10 to AC-13). Spec approved.
+- 00:40 Plan: two tasks. sdd-reviewer plan mode round 1 (52 min; round 2 took 17 min), 1 blocking (T1's check passed without the migration test), fixed with one class per command; also T1 runs the whole build, AC-13 moved to T1, the migration test drops its own schema, no index on stage. Round 2, no blocking finding. Checks frozen. Commit `[006] Plan`.
+- 00:58 T1: tests first (10 failed, as expected), then the migration, enum, converter, and deal changes. `jsdd done 006 T1` passed on attempt 1 (94 tests). Commit `[006] T1`.
+- 00:58 T2: tests first (4 failed), then the list filter. `jsdd done 006 T2` passed on attempt 1 (97 tests). Commit `[006] T2`.
+- 01:00 Verify round 1: converged. All 13 ACs pass, R1 to R6 delivered, no unrequested behavior, no drift. FR-DEAL-04 merged into `docs/capabilities/deal.md`; PLAN.md and BACKLOG.md ticked. Commit `[006] Close`.
 
 ## Decisions made without a person
 
@@ -38,4 +41,11 @@ Everything here was done without a person. Read "Product decisions", "Decisions 
 
 ## Parked
 
+Nothing.
+
 ## For the reviewer
+
+- **AS-03** (won or lost deals can be reopened): the weakest product answer. No document states a sales rule; the agent asks the owner to confirm it.
+- **AS-05** (an update without a stage keeps it): the stage is the one deal field a PUT does not clear when left out, an exception to spec 001 R5, recorded in R3 and `docs/capabilities/deal.md`.
+- **AS-07** (existing deals become open): expensive to reverse once clients set stages; it lives in `V4__deal_stage.sql`.
+- AC-9 reads the migrated row with SQL, not through the API, as the verify reviewer noted. The API read of a stored stage is proven by AC-1.
