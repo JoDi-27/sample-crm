@@ -28,17 +28,25 @@ public class Deal {
     /** Cleared by the database when the contact is deleted. */
     private Long mainContactId;
 
+    @Column(nullable = false, length = 10)
+    private DealStage stage = DealStage.OPEN;
+
     protected Deal() {}
 
-    Deal(DealRequest request) {
-        update(request);
+    /** A new deal, in the stage given, or open when none is given. */
+    Deal(DealRequest request, DealStage stage) {
+        update(request, stage);
     }
 
-    void update(DealRequest request) {
+    /** Replaces the deal's fields, except that a missing stage keeps the current one (spec 006 R3). */
+    void update(DealRequest request, DealStage stage) {
         this.title = request.title();
         this.amount = request.amount();
         this.companyId = request.companyId();
         this.mainContactId = request.mainContactId();
+        if (stage != null) {
+            this.stage = stage;
+        }
     }
 
     public Long getId() {
@@ -59,5 +67,9 @@ public class Deal {
 
     public Long getMainContactId() {
         return mainContactId;
+    }
+
+    public DealStage getStage() {
+        return stage;
     }
 }

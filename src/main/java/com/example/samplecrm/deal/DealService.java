@@ -19,7 +19,7 @@ public class DealService {
     }
 
     public DealResponse create(DealRequest request) {
-        return DealResponse.from(deals.save(new Deal(request)));
+        return DealResponse.from(deals.save(new Deal(request, stageOf(request))));
     }
 
     @Transactional(readOnly = true)
@@ -36,8 +36,14 @@ public class DealService {
 
     public DealResponse update(long id, DealRequest request) {
         Deal deal = find(id);
-        deal.update(request);
+        deal.update(request, stageOf(request));
         return DealResponse.from(deals.saveAndFlush(deal));
+    }
+
+    /** The request's stage, or null when it has none. The controller has already rejected unknown stages. */
+    private static DealStage stageOf(DealRequest request) {
+        return request.stage() == null ? null : DealStage.parse(request.stage())
+                .orElseThrow(() -> new IllegalArgumentException("unknown stage " + request.stage()));
     }
 
     public void delete(long id) {

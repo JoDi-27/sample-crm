@@ -55,6 +55,7 @@ class DealController {
         if (request.mainContactId() != null && !contacts.existsById(request.mainContactId())) {
             errors.add(new FieldErrorItem("mainContactId", "contact " + request.mainContactId() + " does not exist"));
         }
+        checkStage(request.stage(), errors);
         BadInputException.throwIfAny(errors);
 
         DealResponse created = service.create(request);
@@ -93,9 +94,17 @@ class DealController {
         if (request.mainContactId() != null && !contacts.existsById(request.mainContactId())) {
             errors.add(new FieldErrorItem("mainContactId", "contact " + request.mainContactId() + " does not exist"));
         }
+        checkStage(request.stage(), errors);
         BadInputException.throwIfAny(errors);
 
         return service.update(id, request);
+    }
+
+    /** A stage is optional; when given it must be exactly one of the known stages. */
+    private static void checkStage(String stage, List<FieldErrorItem> errors) {
+        if (stage != null && DealStage.parse(stage).isEmpty()) {
+            errors.add(new FieldErrorItem("stage", "must be one of " + DealStage.ALLOWED));
+        }
     }
 
     @DeleteMapping("/{id}")
