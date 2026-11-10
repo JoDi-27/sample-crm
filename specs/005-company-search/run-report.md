@@ -6,16 +6,18 @@ Everything here was done without a person. Read "Product decisions", "Decisions 
 -->
 
 **Mode:** autonomous, preset standard, loop specs/runs/2026-11-09-1.md · **Started by:** JoDi27, by running /jsdd:auto · **Branch:** autonomous/005-company-search (from `autonomous-test`)
-**Started:** 2026-11-09 22:58 · **Ended:** 2026-11-09 23:35
+**Started:** 2026-11-09 22:58 · **Ended:** 2026-11-09 23:09
 **Outcome:** draft pull request: parked at verify.gaps
 
 ## Timeline
 
-- 22:58 Clarify: the one open marker (R2, paging) sent to sdd-product; answer inferred, within the charter; written as AS-01. Commit `[005] Clarify (auto)`.
-- 23:01 Spec review: sdd-reviewer spec mode round 1, 9 findings, none blocking, all clarifications (AC-3 to AC-6 added, R1 sharpened, Scope says what is out); round 2, no blocking finding, one clarification (literal `%` in AC-4). Spec approved.
-- 23:10 Plan: one task. sdd-reviewer plan mode round 1, 2 blocking (a second task whose check proved no AC; an AC-5 test that passed on today's code), both fixed; round 2, no blocking finding. Checks frozen. Commit `[005] Plan`.
-- 23:20 T1: tests first (5 failed, as expected), then the filter. `jsdd done 005 T1` passed on attempt 1: `./mvnw -B verify`, 91 tests, 0 failures. Commit `[005] T1`.
-- 23:30 Verify round 1: every AC passes, R1 and R2 delivered, no unrequested behavior. One gap (G1): the plan says paging is left to a BACKLOG item, and none was written. Parked at verify.gaps.
+Times are commit times (corrected after the run; the first version had estimates).
+
+- 22:59 Clarify: the one open marker (R2, paging) sent to sdd-product; answer inferred, within the charter; written as AS-01. Commit `[005] Clarify (auto)`.
+- 23:00 Spec review: sdd-reviewer spec mode round 1, 9 findings, none blocking, all clarifications (AC-3 to AC-6 added, R1 sharpened, Scope says what is out); round 2, no blocking finding, one clarification (literal `%` in AC-4). Spec approved.
+- 23:05 Plan: one task. sdd-reviewer plan mode round 1, 2 blocking (a second task whose check proved no AC; an AC-5 test that passed on today's code), both fixed; round 2, no blocking finding. Checks frozen. Commit `[005] Plan`.
+- 23:07 T1: tests first (5 failed, as expected), then the filter. `jsdd done 005 T1` passed on attempt 1: `./mvnw -B verify`, 91 tests, 0 failures. Commit `[005] T1`.
+- 23:09 Verify round 1: every AC passes, R1 and R2 delivered, no unrequested behavior. One gap (G1): the plan says paging is left to a BACKLOG item, and none was written. Parked at verify.gaps.
 
 ## Decisions made without a person
 
