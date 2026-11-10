@@ -2,11 +2,11 @@
 id: 006
 title: "Deal stages"
 type: feature
-status: in-progress
+status: done
 phase: 2
 depends_on: []
 refs: ["PLAN Phase 2 / Deal stages", "FR-DEAL-04"]
-updated: 2026-11-09
+updated: 2026-11-10
 ---
 
 # 006 · Deal stages
@@ -89,3 +89,4 @@ A client wants to list only the open deals, so that the team knows what it is st
 - 2026-11-09 Approved (auto: spec.approve, sdd-reviewer spec mode round 1).
 - 2026-11-10 Plan approved (auto: plan.approve, sdd-reviewer round 2).
 - 2026-11-10 Implementing (auto: plan.approve).
+- 2026-11-10 Verified (round 1, converged); FR-DEAL-04 merged into docs/capabilities/deal.md; PLAN.md and BACKLOG.md ticked. Done.

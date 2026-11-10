@@ -28,5 +28,5 @@ Each checklist item is delivered through a spec in `specs/` (see `specs/README.m
 ## Phase 2: Improvements
 
 - [ ] **Company search:** find companies by part of their name · FR-COMP-03
-- [ ] **Deal stages:** follow each deal to won or lost, and list deals by stage · FR-DEAL-04
+- [x] **Deal stages:** follow each deal to won or lost, and list deals by stage · FR-DEAL-04
 - [ ] **API keys:** only known clients can call the API · FR-AUTH-01
