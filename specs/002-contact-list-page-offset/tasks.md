@@ -8,5 +8,5 @@
 
 | Acceptance criterion | Result | Evidence (test, command output, manual check) |
 | --- | --- | --- |
-| AC-1 | | |
-| AC-2 | | |
+| AC-1 | pass | `ContactListApiTest.pagesDoNotOverlap`: red on the old code, green after T1; `./mvnw verify` passes |
+| AC-2 | pass | `ContactListApiTest.secondPageOfCompanyFilter`: red on the old code, green after T1; `./mvnw verify` passes |
