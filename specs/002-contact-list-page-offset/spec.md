@@ -2,11 +2,11 @@
 id: 002
 title: "Contact list page offset"
 type: feature
-status: draft
+status: planned
 phase: 2
 depends_on: []
 refs: ["FR-LIST-01", "BACKLOG: Next / Contact list repeats a row on page 2 and later"]
-updated: 2026-11-10
+updated: 2026-11-11
 ---
 
 # 002 · Contact list page offset
@@ -53,3 +53,5 @@ None.
 ## Changelog
 
 - 2026-11-10 Created.
+- 2026-11-11 Approved (by sdd-runtime-bot, by starting /jsdd:auto).
+- 2026-11-11 Plan approved (auto: plan.approve, sdd-reviewer round 1).

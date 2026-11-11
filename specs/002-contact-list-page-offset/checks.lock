@@ -1,0 +1,2 @@
+# Checks frozen when the plan was approved, by jsdd freeze. jsdd done refuses a task whose check differs.
+T1	./mvnw -q test -Dtest=ContactListApiTest
