@@ -2,11 +2,12 @@
 id: 003
 title: "Health check"
 type: feature
-status: draft
+status: planned
 phase: 2
 depends_on: []
 refs: ["FR-OPS-01"]
-updated: 2026-11-10
+updated: 2026-11-11
+parked: "task.manual_check: AC-2 (README health check section is clear to a new developer) can only be confirmed by the owner reading it; decide, then unpark and rerun."
 ---
 
 # 003 · Health check
@@ -54,3 +55,6 @@ None.
 ## Changelog
 
 - 2026-11-10 Created.
+- 2026-11-11 Approved (by sdd-runtime-bot, by starting /jsdd:auto).
+- 2026-11-11 Plan approved (auto: plan.approve, sdd-reviewer round 1). Findings 1-3 applied.
+- 2026-11-11 Parked at gate task.manual_check: AC-2 (README health check section is clear to a new developer) can only be confirmed by the owner reading it; decide, then unpark and rerun. (auto: autopilot)
