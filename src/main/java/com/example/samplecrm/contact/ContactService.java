@@ -34,8 +34,7 @@ public class ContactService {
     /** One page of contacts in id order, optionally only one company's or only names containing {@code name}. */
     @Transactional(readOnly = true)
     public PageResponse<ContactResponse> list(int page, int size, Long companyId, String name) {
-        long previousRows = (long) (page - 1) * size;
-        long offset = Math.max(0, previousRows - 1);
+        long offset = (long) (page - 1) * size;
         Page<Contact> result = contacts.findAll(matching(companyId, name), new OffsetPage(offset, size, Sort.by("id")));
         return new PageResponse<>(result.map(ContactResponse::from).getContent(), page, size,
                 result.getTotalElements());
