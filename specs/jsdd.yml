@@ -1,5 +1,6 @@
 version: 1
 modes: [manual, autopilot]
+test_command: "./mvnw -B verify"   # the whole suite, as CI runs it
 
 # Claims are refs on origin (refs/sdd-claims/*), so a throwaway container's
 # claim is seen by every clone, and by the next run (sdd-runtime DEC-21).
