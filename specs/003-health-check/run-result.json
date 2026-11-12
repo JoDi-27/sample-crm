@@ -1,0 +1,32 @@
+{
+  "schema": "jsdd.run-result/1",
+  "spec": "003",
+  "runs": [
+    {
+      "n": 1,
+      "claude": {
+        "cost_usd": 0.33315150000000004,
+        "turns": 7,
+        "is_error": null,
+        "session_id": "b1b791a4-9516-4b37-8bcb-116c36efbdf6"
+      },
+      "started": "2026-11-11T17:47:43Z",
+      "mode": "autopilot",
+      "profile": "cloud",
+      "session": "b1b791a4-9516-4b37-8bcb-116c36efbdf6",
+      "outcome": "parked",
+      "gate": "task.manual_check",
+      "reason": "AC-2 (README health check section is clear to a new developer) can only be confirmed by the owner reading it; decide, then unpark and rerun.",
+      "branch": "autopilot/003-health-check",
+      "base": "origin/main",
+      "status": "planned",
+      "tasks": {
+        "ticked": 0,
+        "total": 2
+      },
+      "commits": 1,
+      "assumed": [],
+      "ended": "2026-11-11T17:48:52Z"
+    }
+  ]
+}
