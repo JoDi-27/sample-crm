@@ -2,7 +2,7 @@
 id: 005
 title: "Deal list contact filter"
 type: feature
-status: in-progress
+status: planned
 phase: 2
 depends_on: []
 refs: ["FR-DEAL-01"]
@@ -69,3 +69,5 @@ None.
 - 2026-11-12 Approved (by sdd-runtime-bot, by starting /jsdd:auto).
 - 2026-11-12 Plan approved (auto: plan.approve, sdd-reviewer round 1; the blocking AC-4 guard finding is now stated as deliberate).
 - 2026-11-12 Implementing (auto: plan.approve).
+- 2026-11-12 Verification round 1 found gaps; fixes approved, see verify-report.md (auto: verify.gaps).
+- 2026-11-12 Amendment A1 approved (auto: plan.approve, sdd-reviewer round 1).

@@ -1,0 +1,8 @@
+# The project's full test suite on this spec's code, recorded by jsdd suite. Do not edit: run jsdd suite 005 again.
+command=./mvnw -B verify
+result=fail
+exit=1
+commit=0a3f38212a051b22295cbd714d3b209b2c636407
+clean=yes
+seconds=22
+date=2026-11-12T15:55:10Z

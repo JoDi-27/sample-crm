@@ -6,6 +6,12 @@
   - files: `deal/DealRepository.java`, `deal/DealService.java`, `deal/DealController.java`, `src/test/java/com/example/samplecrm/DealListApiTest.java`
   - check: `./mvnw test -Dtest=DealListApiTest,DealApiTest`
 
+### A1 · Follow-up from verify round 1
+
+- [ ] **T2** Update `ApiDescriptionTest` for the new deal list parameter → AC-1 (A1/G1)
+  - files: `src/test/java/com/example/samplecrm/ApiDescriptionTest.java`
+  - check: `./mvnw test -Dtest=ApiDescriptionTest`
+
 ## Evidence
 
 | Acceptance criterion | Result | Evidence (test, command output, manual check) |

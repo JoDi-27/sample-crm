@@ -1,2 +1,3 @@
 # Checks frozen when the plan was approved, by jsdd freeze. jsdd done refuses a task whose check differs.
 T1	./mvnw test -Dtest=DealListApiTest,DealApiTest
+T2	./mvnw test -Dtest=ApiDescriptionTest

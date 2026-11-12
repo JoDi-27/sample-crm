@@ -63,3 +63,28 @@ Add an optional `mainContactId` query parameter to `GET /deals`, next to `compan
 | --- | --- |
 
 ## Amendments
+
+### A1 · Verify round 1 (2026-11-12)
+
+Source: verify-report.md round 1, approved by auto: verify.gaps, 2026-11-12.
+
+| Gap | Action | Became |
+| --- | --- | --- |
+| G1 | Fix the test: `ApiDescriptionTest` pins the deal list's parameters | T2 |
+
+#### Decisions
+
+| # | Decision | Alternatives | Why |
+| --- | --- | --- | --- |
+| A1.1 | Update the pinned expectation to `companyId` and `mainContactId` | Loosen the assertion | The test pins the API description on purpose; the new parameter is the spec's change. The assertion stays exact. |
+
+#### Test strategy
+
+| Acceptance criterion | Verified by |
+| --- | --- |
+| AC-1 (R1) | `ApiDescriptionTest.listsEveryOperation` expects the new parameter in the API description; the full suite passes |
+
+#### Risks
+
+- None. Tests must not run at the same time on the shared database.
+
