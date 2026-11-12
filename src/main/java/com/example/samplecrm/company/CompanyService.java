@@ -25,8 +25,12 @@ public class CompanyService {
     }
 
     @Transactional(readOnly = true)
-    public List<CompanyResponse> list() {
-        return companies.findAll(Sort.by("id")).stream().map(CompanyResponse::from).toList();
+    public List<CompanyResponse> list(String name) {
+        Sort byId = Sort.by("id");
+        List<Company> found = name == null || name.isEmpty()
+                ? companies.findAll(byId)
+                : companies.findByNameContainingIgnoreCase(name, byId);
+        return found.stream().map(CompanyResponse::from).toList();
     }
 
     public CompanyResponse update(long id, CompanyRequest request) {

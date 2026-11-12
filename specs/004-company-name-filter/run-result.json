@@ -1,0 +1,32 @@
+{
+  "schema": "jsdd.run-result/1",
+  "spec": "004",
+  "runs": [
+    {
+      "n": 1,
+      "claude": {
+        "cost_usd": 0.7236071000000002,
+        "turns": 22,
+        "is_error": null,
+        "session_id": "4475998a-90ea-4818-8913-10e8e2dc1696"
+      },
+      "started": "2026-11-10T21:10:31Z",
+      "mode": "autopilot",
+      "profile": "cloud",
+      "session": "4475998a-90ea-4818-8913-10e8e2dc1696",
+      "outcome": "done",
+      "gate": null,
+      "reason": null,
+      "branch": "autopilot/004-company-name-filter",
+      "base": "origin/main",
+      "status": "done",
+      "tasks": {
+        "ticked": 1,
+        "total": 1
+      },
+      "commits": 3,
+      "assumed": [],
+      "ended": "2026-11-10T21:15:33Z"
+    }
+  ]
+}

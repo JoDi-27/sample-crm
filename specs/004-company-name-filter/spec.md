@@ -2,7 +2,7 @@
 id: 004
 title: "Company name filter"
 type: feature
-status: draft
+status: done
 phase: 2
 depends_on: []
 refs: ["FR-COMP-01"]
@@ -55,3 +55,7 @@ None.
 ## Changelog
 
 - 2026-11-10 Created.
+- 2026-11-10 Approved (by sdd-runtime-bot, by starting /jsdd:auto).
+- 2026-11-10 Plan approved (auto: plan.approve, sdd-reviewer round 2).
+- 2026-11-10 Implementing (auto: plan.approve).
+- 2026-11-10 Verified, converged in round 1 (auto: verify, sdd-reviewer). Done.
