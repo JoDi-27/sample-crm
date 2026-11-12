@@ -2,11 +2,12 @@
 id: 005
 title: "Deal list contact filter"
 type: feature
-status: draft
+status: planned
 phase: 2
 depends_on: []
 refs: ["FR-DEAL-01"]
 updated: 2026-11-12
+parked: "implement.stuck: A claim by session 889211d1 (since 10:37) marks 005 T1 done, but no work for it exists on any branch, so jsdd done refuses to tick T1. Release it (jsdd release 005 T1) if stale, then run /jsdd:auto 005; the code and DealListApiTest are on this branch and pass."
 ---
 
 # 005 · Deal list contact filter
@@ -66,3 +67,6 @@ None.
 ## Changelog
 
 - 2026-11-12 Created. FR-DEAL-01 added to `docs/requirements.md`; no baseline of the Deals area was taken first, as for spec 004.
+- 2026-11-12 Approved (by sdd-runtime-bot, by starting /jsdd:auto).
+- 2026-11-12 Plan approved (auto: plan.approve, sdd-reviewer round 1).
+- 2026-11-12 Parked at gate implement.stuck: A claim by session 889211d1 (since 10:37) marks 005 T1 done, but no work for it exists on any branch, so jsdd done refuses to tick T1. Release it (jsdd release 005 T1) if stale, then run /jsdd:auto 005; the code and DealListApiTest are on this branch and pass. (auto: autopilot)

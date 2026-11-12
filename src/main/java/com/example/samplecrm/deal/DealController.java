@@ -62,8 +62,9 @@ class DealController {
     }
 
     @GetMapping
-    List<DealResponse> list(@RequestParam(required = false) Long companyId) {
-        return service.list(companyId);
+    List<DealResponse> list(@RequestParam(required = false) Long companyId,
+            @RequestParam(required = false) Long mainContactId) {
+        return service.list(companyId, mainContactId);
     }
 
     @GetMapping("/{id}")

@@ -1,0 +1,27 @@
+{
+  "schema": "jsdd.run-result/1",
+  "spec": "005",
+  "runs": [
+    {
+      "n": 1,
+      "claude": null,
+      "started": "2026-11-12T11:16:33Z",
+      "mode": "autopilot",
+      "profile": "cloud",
+      "session": "0ee2f12e-ff19-4e11-a2e3-4fe8bf142696",
+      "outcome": "parked",
+      "gate": "implement.stuck",
+      "reason": "A claim by session 889211d1 (since 10:37) marks 005 T1 done, but no work for it exists on any branch, so jsdd done refuses to tick T1. Release it (jsdd release 005 T1) if stale, then run /jsdd:auto 005; the code and DealListApiTest are on this branch and pass.",
+      "branch": "autopilot/005-deal-list-contact-filter",
+      "base": "origin/main",
+      "status": "planned",
+      "tasks": {
+        "ticked": 0,
+        "total": 1
+      },
+      "commits": 0,
+      "assumed": [],
+      "ended": "2026-11-12T11:18:35Z"
+    }
+  ]
+}
