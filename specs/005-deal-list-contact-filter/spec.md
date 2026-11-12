@@ -2,7 +2,7 @@
 id: 005
 title: "Deal list contact filter"
 type: feature
-status: draft
+status: done
 phase: 2
 depends_on: []
 refs: ["FR-DEAL-01"]
@@ -66,3 +66,10 @@ None.
 ## Changelog
 
 - 2026-11-12 Created. FR-DEAL-01 added to `docs/requirements.md`; no baseline of the Deals area was taken first, as for spec 004.
+- 2026-11-12 Approved (by sdd-runtime-bot, by starting /jsdd:auto).
+- 2026-11-12 Plan approved (auto: plan.approve, sdd-reviewer round 1; the blocking AC-4 guard finding is now stated as deliberate).
+- 2026-11-12 Implementing (auto: plan.approve).
+- 2026-11-12 Verification round 1 found gaps; fixes approved, see verify-report.md (auto: verify.gaps).
+- 2026-11-12 Amendment A1 approved (auto: plan.approve, sdd-reviewer round 1).
+- 2026-11-12 Implementing A1 (auto: plan.approve).
+- 2026-11-12 Verification round 2 converged; closed. Capability merged into docs/capabilities/deal.md.
