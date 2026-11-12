@@ -13,7 +13,7 @@ The service already exists (spec 001). Its current behavior is not listed here y
 | Companies | `FR-COMP` | `company/`, `V1__companies.sql` | `CompanyApiTest`, `CompanyListApiTest` |
 | Contacts (create, read, update, delete) | `FR-CONT` | `contact/Contact*.java`, `V2__contacts.sql` | `ContactApiTest` |
 | Contact list, paging, and search | `FR-LIST` | `ContactController.list`, `ContactService.list`, `contact/OffsetPage.java`, `api/PageResponse.java` | `ContactListApiTest` |
-| Deals | `FR-DEAL` | `deal/`, `V3__deals.sql` | `DealApiTest` |
+| Deals | `FR-DEAL` | `deal/`, `V3__deals.sql` | `DealApiTest`, `DealListApiTest` |
 | Errors and input validation | `FR-ERR` | `api/`, validation in each `*Controller` | `badInput*` and `unknownId` in each `*ApiTest` |
 | Deleting referenced records | `FR-REF` | `ON DELETE SET NULL` in `V2`, `V3`; `CompanyService.delete`, `ContactService.delete` | `*Keeps*` tests in `ContactApiTest`, `DealApiTest` |
 | API description | `FR-APIDOC` | springdoc in `pom.xml` (`/v3/api-docs`) | `ApiDescriptionTest` |
