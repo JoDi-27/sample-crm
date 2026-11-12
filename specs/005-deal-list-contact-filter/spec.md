@@ -2,7 +2,7 @@
 id: 005
 title: "Deal list contact filter"
 type: feature
-status: draft
+status: planned
 phase: 2
 depends_on: []
 refs: ["FR-DEAL-01"]
@@ -66,3 +66,5 @@ None.
 ## Changelog
 
 - 2026-11-12 Created. FR-DEAL-01 added to `docs/requirements.md`; no baseline of the Deals area was taken first, as for spec 004.
+- 2026-11-12 Approved (by sdd-runtime-bot, by starting /jsdd:auto).
+- 2026-11-12 Plan approved (auto: plan.approve, sdd-reviewer round 1).
