@@ -10,7 +10,7 @@ The service already exists (spec 001). Its current behavior is not listed here y
 
 | Area | Group | Code | Tests |
 |---|---|---|---|
-| Companies | `FR-COMP` | `company/`, `V1__companies.sql` | `CompanyApiTest` |
+| Companies | `FR-COMP` | `company/`, `V1__companies.sql` | `CompanyApiTest`, `CompanyListApiTest` |
 | Contacts (create, read, update, delete) | `FR-CONT` | `contact/Contact*.java`, `V2__contacts.sql` | `ContactApiTest` |
 | Contact list, paging, and search | `FR-LIST` | `ContactController.list`, `ContactService.list`, `contact/OffsetPage.java`, `api/PageResponse.java` | `ContactListApiTest` |
 | Deals | `FR-DEAL` | `deal/`, `V3__deals.sql` | `DealApiTest` |

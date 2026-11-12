@@ -110,6 +110,35 @@ class ContactListApiTest extends ApiTestBase {
     }
 
     @Test
+    void pagesDoNotOverlap() { // 002 AC-1
+        contacts(5);
+
+        List<String> all = names(get("/contacts?page=1&size=5"));
+        List<String> walked = new java.util.ArrayList<>();
+        walked.addAll(names(get("/contacts?page=1&size=2")));
+        walked.addAll(names(get("/contacts?page=2&size=2")));
+        List<String> third = names(get("/contacts?page=3&size=2"));
+        walked.addAll(third);
+
+        assertThat(third).hasSize(1);
+        assertThat(walked).hasSize(5).doesNotHaveDuplicates().isEqualTo(all);
+    }
+
+    @Test
+    void secondPageOfCompanyFilter() { // 002 AC-2
+        long acme = create("/companies", body("name", "Acme"));
+        contact("Ana", "One", acme);
+        contact("Zed", "Other", null);
+        contact("Bruno", "Two", acme);
+        contact("Carla", "Three", acme);
+        contact("Yan", "Other", null);
+
+        Map<String, Object> page = get("/contacts?companyId=" + acme + "&page=2&size=2");
+
+        assertThat(names(page)).containsExactly("Carla Three");
+    }
+
+    @Test
     void pastLastPage() { // AC-15
         contacts(3);
 
