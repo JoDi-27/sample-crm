@@ -8,7 +8,7 @@
 
 ### A1 · Follow-up from verify round 1
 
-- [ ] **T2** Update `ApiDescriptionTest` for the new deal list parameter → AC-1 (A1/G1)
+- [x] **T2** Update `ApiDescriptionTest` for the new deal list parameter → AC-1 (A1/G1)
   - files: `src/test/java/com/example/samplecrm/ApiDescriptionTest.java`
   - check: `./mvnw test -Dtest=ApiDescriptionTest`
 

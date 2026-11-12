@@ -24,7 +24,7 @@ class ApiDescriptionTest extends ApiTestBase {
 
         assertThat(parameterNames(paths.get("/contacts").get("get")))
                 .containsExactlyInAnyOrder("page", "size", "companyId", "name");
-        assertThat(parameterNames(paths.get("/deals").get("get"))).containsExactly("companyId");
+        assertThat(parameterNames(paths.get("/deals").get("get"))).containsExactlyInAnyOrder("companyId", "mainContactId");
     }
 
     @SuppressWarnings("unchecked")
