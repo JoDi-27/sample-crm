@@ -24,6 +24,12 @@ The service already exists (spec 001). Its current behavior is not listed here y
 |---|---|---|---|
 | FR-COMP-01 | A client can narrow the company list to companies whose name contains a given text, ignoring case | sdd-runtime spike 004 | S |
 
+### Deals (FR-DEAL)
+
+| ID | Requirement | Source | Priority |
+|---|---|---|---|
+| FR-DEAL-01 | A client can narrow the deal list to deals whose main contact is a given contact, alone or together with the company filter | sdd-runtime test | S |
+
 ### Operations (FR-OPS)
 
 | ID | Requirement | Source | Priority |
