@@ -1,8 +1,8 @@
 # 005 · Verify report: Deal list contact filter
 
-**Round:** 1 · **Date:** 2026-11-12 · **Git range:** main..HEAD
-**Outcome:** gaps found
-**Decision:** approved (auto: verify.gaps, 2026-11-12)
+**Round:** 2 · **Date:** 2026-11-12 · **Git range:** main..HEAD
+**Outcome:** converged
+**Decision:** none needed
 **Planned as:** A1 in plan.md
 
 ## Acceptance criteria
@@ -42,3 +42,4 @@ The plan missed `ApiDescriptionTest`, which pins the deal list's parameters (G1)
 | Round | Date | Outcome | Decision |
 | --- | --- | --- | --- |
 | 1 | 2026-11-12 | gaps found | approved (auto: verify.gaps) |
+| 2 | 2026-11-12 | converged | none needed (T2 fixed G1; full suite 95 tests, 0 failures) |

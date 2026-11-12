@@ -16,8 +16,8 @@
 
 | Acceptance criterion | Result | Evidence (test, command output, manual check) |
 | --- | --- | --- |
-| AC-1 | | |
-| AC-2 | | |
-| AC-3 | | |
-| AC-4 | | |
-| AC-5 | | |
+| AC-1 | pass | DealListApiTest.filterByContact; full suite `./mvnw -B verify`: 95 tests, 0 failures |
+| AC-2 | pass | DealListApiTest.filterByCompanyAndContact; full suite `./mvnw -B verify`: 95 tests, 0 failures |
+| AC-3 | pass | DealListApiTest.unknownContactIsEmpty; full suite `./mvnw -B verify`: 95 tests, 0 failures |
+| AC-4 | pass | DealListApiTest.noContactFilterUnchanged (guard, as the plan says); full suite `./mvnw -B verify`: 95 tests, 0 failures |
+| AC-5 | pass | DealListApiTest.invalidContactFilter (abc, 1.5); full suite `./mvnw -B verify`: 95 tests, 0 failures |
