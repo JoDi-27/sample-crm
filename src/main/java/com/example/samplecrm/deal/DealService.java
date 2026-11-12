@@ -27,10 +27,19 @@ public class DealService {
         return DealResponse.from(find(id));
     }
 
-    /** Every deal, or every deal of one company, in id order. */
+    /** Every deal, narrowed by company and/or main contact when given, in id order. */
     @Transactional(readOnly = true)
-    public List<DealResponse> list(Long companyId) {
-        List<Deal> found = companyId == null ? deals.findAll(BY_ID) : deals.findByCompanyId(companyId, BY_ID);
+    public List<DealResponse> list(Long companyId, Long contactId) {
+        List<Deal> found;
+        if (companyId != null && contactId != null) {
+            found = deals.findByCompanyIdAndMainContactId(companyId, contactId, BY_ID);
+        } else if (companyId != null) {
+            found = deals.findByCompanyId(companyId, BY_ID);
+        } else if (contactId != null) {
+            found = deals.findByMainContactId(contactId, BY_ID);
+        } else {
+            found = deals.findAll(BY_ID);
+        }
         return found.stream().map(DealResponse::from).toList();
     }
 
